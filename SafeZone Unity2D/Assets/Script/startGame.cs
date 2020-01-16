@@ -8,15 +8,15 @@ public class startGame : MonoBehaviour
     public spawnFirePoints spn;
     public playerMovement pm;
     public coinScript cp;
-    public Text startGameTxt;
+    public Text startGameTxt, madeByTxt;
     public AudioSource bounusStartSound;
 
     void Update()
     {
-        if (Input.GetKey(KeyCode.S))
+        if (Input.anyKey)
         {
             bounusStartSound.Play();
-            startGameTxt.enabled = false;
+            madeByTxt.enabled = startGameTxt.enabled = false;
             spn.enabled = pm.enabled = cp.enabled = true;
             this.enabled = false;
         }

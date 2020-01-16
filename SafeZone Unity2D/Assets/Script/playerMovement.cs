@@ -27,8 +27,15 @@ public class playerMovement : MonoBehaviour
 
     void Update()
     {
-        movement.x = Input.GetAxisRaw("Horizontal");
-        movement.y = Input.GetAxisRaw("Vertical");
+        //For Mobile JoyButton Input System
+        movement.x = SimpleInput.GetAxisRaw("Horizontal");
+        movement.y = SimpleInput.GetAxisRaw("Vertical");
+        //
+
+        //For KeyBoard Input System
+        //movement.x = Input.GetAxisRaw("Horizontal");
+        //movement.y = Input.GetAxisRaw("Vertical");
+        //
 
         xPosScreen = Screen.width;
         yPosScreen = Screen.height;
@@ -38,7 +45,7 @@ public class playerMovement : MonoBehaviour
         playerPos = cam.WorldToScreenPoint(transform.position);
         //Debug.Log(playerPos);
 
-        if (movement.x == -1) // for flip player side animation
+        if (movement.x < 0 || movement.x < -1) // for flip player side animation
         {
             transform.localScale = new Vector3(-1f,1f,1f);
         }
